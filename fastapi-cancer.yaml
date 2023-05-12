@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-cancer-deploy
+spec:
+  selector:
+    matchLabels:
+      app: fastapi-cancer
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: fastapi-cancer
+    spec:
+     containers:
+     - name: fastapi-cancer
+       image: fertay/fastapi_cancer
+       imagePullPolicy: Always
+       ports:
+       - containerPort: 8087
